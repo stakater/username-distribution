@@ -21,9 +21,9 @@
     <h1 class="text-center text-2xl">Admin Panel</h1>
     <div class="flex flex-1 flex-row-reverse">
       {{#if streamerMode}}
-        <a class="flex bg-green-700 hover:bg-green-900 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" href="/admin/toggle-streamer-mode/">Streamer Mode: On</a>
+        <a class="flex bg-green-700 hover:bg-green-900 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" href="/admin/toggle-streamer-mode/">Show Personal Information</a>
       {{else}}
-        <a class="flex bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" href="/admin/toggle-streamer-mode/">Streamer Mode: Off</a>
+        <a class="flex bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" href="/admin/toggle-streamer-mode/">Hide Personal Information</a>
       {{/if}}
       <button class="flex bg-red-700 hover:bg-red-900 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline mr-2" onclick="unassignAll()">Unassign All</button>
     </div>

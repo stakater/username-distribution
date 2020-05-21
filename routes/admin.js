@@ -33,8 +33,8 @@ router.get('/', async (req, res) => {
   })
 
   if (req.session.streamerMode === undefined) {
-    // Enable streamer mode by default
-    req.session.streamerMode = true
+    // Disable streamer mode by default
+    req.session.streamerMode = false
   }
 
   res.render('admin', {
