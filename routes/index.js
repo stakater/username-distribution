@@ -29,7 +29,7 @@ router.post('/request-account', urlencoded(), (req, res) => {
     })
   } else if (req.body.accessToken !== config.accounts.accessToken) {
     res.render('sorry', {
-      message: 'Please enter a valid access token to access an account.'
+      message: 'Please enter a valid password to access an account.'
     })
   } else {
     log('user requested account with realname:', req.body.realname)
