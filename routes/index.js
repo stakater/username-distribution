@@ -86,9 +86,7 @@ router.get('/', async (req, res) => {
           ['LAB_USER_COUNT', config.accounts.number],
           ['LAB_USER_PASS', config.accounts.password],
           ['LAB_USER_ACCESS_TOKEN', config.accounts.accessToken],
-          ['LAB_USER_PREFIX', config.accounts.prefix],
-          ['LAB_ADMIN_PASS', config.adminPassword],
-          ['LAB_SESSION_SECRET', config.sessionSecret]
+          ['LAB_USER_PREFIX', config.accounts.prefix]
         ];
 
         res.render('index', {
@@ -103,8 +101,8 @@ router.get('/', async (req, res) => {
             var url = val.url
             var prettyName = val.prettyName
             subs.forEach(function(sub) {
-              url = url.replace('{{' + sub[0] + '}}', sub[1])
-              prettyName = prettyName.replace('{{' + sub[0] + '}}', sub[1])
+              url = url.replace('%' + sub[0] + '%', sub[1])
+              prettyName = prettyName.replace('%' + sub[0] + '%', sub[1])
             })
             return {url: url, prettyName: prettyName}
           })

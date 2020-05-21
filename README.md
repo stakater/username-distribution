@@ -98,15 +98,15 @@ You can set these variables via a `Deployment` or `DeploymentConfig`, or by moun
 | LAB_USER_PREFIX | evals | ✅| The username prefix for each account (eg. evals1, evals2) |
 | LAB_MODULE_URLS | [] | | Comma separated list of modules and module names, e.g "https://module.a;Lab 1,https://module.b;Lab2" |
 | LAB_USER_PAD_ZERO | false | ✅| Determines if user should be formatted as evals01 or "evals1" when user number is less than 10 |
-| LAB_ADMIN_PASS | pleasechangethis |  ✅| The password used to login at the /admin URL |
+| LAB_ADMIN_PASS | pleasechangethis |   | The password used to login at the /admin URL |
 | LAB_REDIS_HOST | not set | | The Redis instance to use. Provide only the hostname, and no port |
 | LAB_REDIS_PASS | not set | | The password used to access Redis |
-| LAB_SESSION_SECRET | Randomly generated on startup | ✅| The secret used to sign cookies. |
+| LAB_SESSION_SECRET | Randomly generated on startup |  | The secret used to sign cookies. |
 
-For config names marked as _Substitutable_ (✅) above, these names can be referenced in the value for `LAB_MODULE_URLS` to substitute the values using `{{`_NAME_`}}`. The values `{{USERNAME}}` and `{{REALNAME}}` may also be used to refer to the name the user gave and their assigned username. For example, to include the assigned username and number of users in the URLs generated for each user, set the variable `LAB_MODULE_URLS` to:
+For config names marked as _Substitutable_ (✅) above, these names can be referenced in the value for `LAB_MODULE_URLS` to substitute the values using `%`_NAME_`%`. The values `%USERNAME%` and `%REALNAME%` may also be used to refer to the name the user gave and their assigned username. For example, to include the assigned username and number of users in the URLs generated for each user, set the variable `LAB_MODULE_URLS` to:
 
 ```
-https://module.a?userid={{USERNAME}};The First Lab,https://module.b?userid={{USERNAME}}&count={{LAB_USER_COUNT}};The Final Lab
+https://module.a?userid=%USERNAME%;The First Lab,https://module.b?userid=%USERNAME%&count=%LAB_USER_COUNT%;The Final Lab
 ```
 
 
