@@ -105,6 +105,18 @@ router.get('/', async (req, res) => {
               prettyName = prettyName.replace('%' + sub[0] + '%', sub[1])
             })
             return {url: url, prettyName: prettyName}
+          }),
+          extraUrls: config.extraUrls.map(function(val){
+            val = val.split(';');
+            return {url:val[0], prettyName:val[1]}
+          }).map(function(val) {
+            var url = val.url
+            var prettyName = val.prettyName
+            subs.forEach(function(sub) {
+              url = url.replace('%' + sub[0] + '%', sub[1])
+              prettyName = prettyName.replace('%' + sub[0] + '%', sub[1])
+            })
+            return {url: url, prettyName: prettyName}
           })
         });
       }

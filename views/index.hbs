@@ -47,4 +47,14 @@
       </div>
     </div>
   </div>
+    <div class="d-flex mt-4 justify-content-center">
+      {{#each extraUrls}}
+      <a class="text-base mt-2 text-blue-600" target="_blank" href="{{this.url}}">{{this.prettyName}}</a>
+      {{!-- add a separator except for the last one --}}
+      {{#if @last}}
+      {{else}}
+      |
+      {{/if}}
+      {{/each}}
+    </div>
 </div>

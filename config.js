@@ -14,6 +14,7 @@ const env = require('env-var').from({
   LAB_USER_PAD_ZERO: 'false',
   LAB_ADMIN_PASS: 'pleasechangethis',
   LAB_MODULE_URLS: 'https://a.com;Lab 1,https://b.com;Lab 2',
+  LAB_EXTRA_URLS: '',
 
   // If you plan to use redis uncomment and set these,
   // or provide in values for them in the environment
@@ -44,5 +45,6 @@ module.exports = {
     padZeroes: env.get('LAB_USER_PAD_ZERO').asBool()
   },
   // Comma separated list of URLS
-  modules: env.get('LAB_MODULE_URLS').asArray()
+  modules: env.get('LAB_MODULE_URLS').asArray(),
+  extraUrls: env.get('LAB_EXTRA_URLS').asArray()
 }
