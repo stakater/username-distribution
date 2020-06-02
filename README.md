@@ -2,7 +2,7 @@
 
 This web app distributes usernames and passwords to individuals who are taking part in an OpenShift based workshop. Deploying this app in OpenShift and exposing it publicly will give users a central access point, giving them their individual login credentials and links to lab guides.
 
-First, a user must enter their name so they can be identified:
+First, a user must enter their email so they can be identified:
 
 ![Request Account](screens/account-request.png)
 
@@ -104,7 +104,7 @@ You can set these variables via a `Deployment` or `DeploymentConfig`, or by moun
 | LAB_REDIS_PASS | not set | | The password used to access Redis |
 | LAB_SESSION_SECRET | Randomly generated on startup |  | The secret used to sign cookies. |
 
-For config names marked as _Substitutable_ (✅) above, these names can be referenced in the value for `LAB_MODULE_URLS` and `LAB_EXTRA_URLS` to substitute the values using `%`_NAME_`%`. The values `%USERNAME%` and `%REALNAME%` may also be used to refer to the name the user gave and their assigned username. For example, to include the assigned username and number of users in the URLs generated for each user, set the variable `LAB_MODULE_URLS` to:
+For config names marked as _Substitutable_ (✅) above, these names can be referenced in the value for `LAB_MODULE_URLS` and `LAB_EXTRA_URLS` to substitute the values using `%`_NAME_`%`. The values `%USERNAME%` and `%EMAIL%` may also be used to refer to the email the user gave and their assigned username. For example, to include the assigned username and number of users in the URLs generated for each user, set the variable `LAB_MODULE_URLS` to:
 
 ```
 https://module.a?userid=%USERNAME%;The First Lab,https://module.b?userid=%USERNAME%&count=%LAB_USER_COUNT%;The Final Lab

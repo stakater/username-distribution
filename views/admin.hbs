@@ -51,7 +51,7 @@
           <th class="px-4 py-2 border">Username</th>
           <th class="px-4 py-2 border">Assigned On</th>
           <th class="px-4 py-2 border">IP</th>
-          <th class="px-4 py-2 border">Name</th>
+          <th class="px-4 py-2 border">Email</th>
           <th class="px-4 py-2 border">Actions</th>
         </tr>
       </thead>
@@ -68,13 +68,13 @@
             {{else}}
               <td class="border px-4 py-2 text-center">{{this.assignedTs}}</td>
             {{/if}}
-            {{#if this.realname}}
+            {{#if this.email}}
               {{#if ../streamerMode}}
                 <td class="border px-4 py-2 text-center">* * * *</td>
                 <td class="border px-4 py-2 text-center">* * * *</td>
               {{else}}
                 <td class="border px-4 py-2 text-center">{{this.ip}}</td>
-                <td class="border px-4 py-2 text-center">{{this.realname}}</td>
+                <td class="border px-4 py-2 text-center">{{this.email}}</td>
               {{/if}}
             {{else}}
               <td class="border px-4 py-2 text-center"></td>
@@ -82,7 +82,7 @@
             {{/if}}
 
             <td class="border px-4 py-2 text-center">
-              {{#if this.realname}}
+              {{#if this.email}}
                 <button class="bg-orange-500 hover:bg-orange-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" onclick="unassignUser('{{this.username}}')">Unassign</button>
               {{/if}}
             </td>

@@ -14,7 +14,7 @@ var title = config.eventTitle;
 var password = config.accounts.password;
 
 router.get('/request-account', urlencoded(), (req, res) => {
-  if (req.session.realname) {
+  if (req.session.email) {
     // User has already requested an account, redirect them
     res.redirect('/')
   } else {
@@ -23,26 +23,26 @@ router.get('/request-account', urlencoded(), (req, res) => {
 })
 
 router.post('/request-account', urlencoded(), (req, res) => {
-  if (!req.body.realname) {
+  if (!req.body.email) {
     res.render('sorry', {
-      message: 'Please enter a valid name to request an account. Names can only contain letters A-Z and spaces.'
+      message: 'Please enter a valid proper email address to request an account.'
     })
   } else if (req.body.accessToken !== config.accounts.accessToken) {
     res.render('sorry', {
       message: 'Please enter a valid password to access an account.'
     })
   } else {
-    log('user requested account with realname:', req.body.realname)
-    req.session.realname = req.body.realname.trim()
+    log('user requested account with email:', req.body.email)
+    req.session.email = req.body.email.trim()
     res.redirect('/')
   }
 })
 
 /* GET home page. */
 router.get('/', async (req, res) => {
-  var realname = req.session.realname
+  var email = req.session.email
 
-  if (!realname) {
+  if (!email) {
     res.redirect('/request-account')
   } else {
     // Users are a resource that are locked/unlocked asynchronously in the cache
@@ -63,7 +63,7 @@ router.get('/', async (req, res) => {
 
       if (!username) {
         log('the incoming connection has no user in the session, requesting new user assignment')
-        let user = await users.getAndAssignUser(req.headers['x-forwarded-for'] || req.connection.remoteAddress, realname)
+        let user = await users.getAndAssignUser(req.headers['x-forwarded-for'] || req.connection.remoteAddress, email)
 
         if (user) {
           log('found free user is', user)
@@ -80,7 +80,7 @@ router.get('/', async (req, res) => {
 
         var subs = [
           ['USERNAME', username],
-          ['REALNAME', realname],
+          ['EMAIL', email],
           ['LAB_TITLE', title],
           ['LAB_DURATION_HOURS', config.eventHours],
           ['LAB_USER_COUNT', config.accounts.number],
@@ -91,7 +91,7 @@ router.get('/', async (req, res) => {
 
         res.render('index', {
           username,
-          realname,
+          email,
           password: password,
           title: title,
           modules: config.modules.map(function(val){
