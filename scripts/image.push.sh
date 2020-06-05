@@ -5,5 +5,5 @@ if [[ -z "${QUAY_USER}" ]]; then
   exit 1
 fi
 
-docker tag username-distribution quay.io/$QUAY_USER/username-distribution:$TAG
+docker tag username-distribution:$TAG quay.io/$QUAY_USER/username-distribution:$TAG
 docker push quay.io/$QUAY_USER/username-distribution:$TAG
