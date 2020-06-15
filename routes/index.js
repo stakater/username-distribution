@@ -101,8 +101,8 @@ router.get('/', async (req, res) => {
             var url = val.url
             var prettyName = val.prettyName
             subs.forEach(function(sub) {
-              url = url.replace('%' + sub[0] + '%', sub[1])
-              prettyName = prettyName.replace('%' + sub[0] + '%', sub[1])
+              url = url.replace(new RegExp('%' + sub[0] + '%', 'g'), sub[1])
+              prettyName = prettyName.replace(new RegExp('%' + sub[0] + '%', 'g'), sub[1])
             })
             return {url: url, prettyName: prettyName}
           }),
@@ -113,8 +113,8 @@ router.get('/', async (req, res) => {
             var url = val.url
             var prettyName = val.prettyName
             subs.forEach(function(sub) {
-              url = url.replace('%' + sub[0] + '%', sub[1])
-              prettyName = prettyName.replace('%' + sub[0] + '%', sub[1])
+              url = url.replace(new RegExp('%' + sub[0] + '%', 'g'), sub[1])
+              prettyName = prettyName.replace(new RegExp('%' + sub[0] + '%', 'g'), sub[1])
             })
             return {url: url, prettyName: prettyName}
           })
