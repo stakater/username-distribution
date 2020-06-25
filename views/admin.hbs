@@ -14,6 +14,20 @@
       window.location.href = '/admin/unassign/' + username
     }
   }
+  function blockUser (username) {
+    const uSure = confirm('Are you sure you want to block this user ID from being assigned?')
+
+    if (uSure) {
+      window.location.href = '/admin/block/' + username
+    }
+  }
+  function unblockUser (username) {
+    const uSure = confirm('Are you sure you want to allow this user to be assigned?')
+
+    if (uSure) {
+      window.location.href = '/admin/unblock/' + username
+    }
+  }
 </script>
 <div class="container mx-auto">
   <div class="flex items-center">
@@ -62,9 +76,13 @@
           {{else}}
             <tr>
           {{/if}}
-            <td class="border px-4 py-2 w-1/4 text-center">{{this.username}}</td>
             {{#if this.disabled}}
-              <td class="border px-4 py-2 text-center">Account Disabled</td>
+              <td class="text-gray-500 border px-4 py-2 w-1/4 text-center">{{this.username}}</td>
+            {{else}}
+              <td class="border px-4 py-2 w-1/4 text-center">{{this.username}}</td>
+            {{/if}}
+            {{#if this.disabled}}
+              <td class="text-gray-500 border px-4 py-2 text-center">Account Disabled</td>
             {{else}}
               <td class="border px-4 py-2 text-center">{{this.assignedTs}}</td>
             {{/if}}
@@ -84,6 +102,12 @@
             <td class="border px-4 py-2 text-center">
               {{#if this.email}}
                 <button class="bg-orange-500 hover:bg-orange-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" onclick="unassignUser('{{this.username}}')">Unassign</button>
+              {{else}}
+                {{#if this.disabled}}
+                    <button class="bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" onclick="unblockUser('{{this.username}}')">Unblock</button>
+                {{else}}
+                  <button class="bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" onclick="blockUser('{{this.username}}')">Block</button>
+                {{/if}}
               {{/if}}
             </td>
           </tr>

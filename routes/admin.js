@@ -135,6 +135,38 @@ router.get('/unassign/:username', async (req, res, next) => {
   }
 })
 
+router.get('/block/:username', async (req, res, next) => {
+  const username = req.params.username
+
+  log(`block requested for username ${username}`)
+
+  try {
+    await users.blockUser(username)
+
+    res.redirect('/admin')
+    log(`successfully blocked "${username}"`)
+  } catch (e) {
+    log(`failed to block "${username}"`, e)
+    next(e)
+  }
+})
+
+router.get('/unblock/:username', async (req, res, next) => {
+  const username = req.params.username
+
+  log(`unblock requested for username ${username}`)
+
+  try {
+    await users.unblockUser(username)
+
+    res.redirect('/admin')
+    log(`successfully unblocked "${username}"`)
+  } catch (e) {
+    log(`failed to unblock "${username}"`, e)
+    next(e)
+  }
+})
+
 router.get('/toggle-streamer-mode', (req, res) => {
   const isEnabled = req.session.streamerMode
 
