@@ -90,7 +90,7 @@ You can set these variables via a `Deployment` or `DeploymentConfig`, or by moun
 | Name | Default | Substitutable | Description |
 | ---- | ------- | ------------- | ----------- |
 | LAB_TITLE | OCP4 Workshop | ✅| This title will be displayed at the top of the page |
-| LAB_DURATION_HOURS | 2h | ✅|  The length of the event. Should be in a format per [timestring docs](https://www.npmjs.com/package/timestring) |
+| LAB_DURATION_HOURS | 2h | ✅|  The length of the event. Should be in a format per [timestring docs](https://www.npmjs.com/package/timestring). This determines how quickly the username assignments will expire - if you are running just one workshop per deployment, you might like to set this to a very long time e.g. "1y". |
 | LAB_USER_COUNT | 50 | ✅|  The number of available user logins |
 | LAB_USER_PASS | openshift | ✅|  The default password for all users |
 | LAB_USER_ACCESS_TOKEN | redhatlabs | ✅|  Access token required to join the lab. Give this to your users. |
